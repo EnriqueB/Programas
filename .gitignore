@@ -1,0 +1,4 @@
+#ignore unneeded files
+*.swp
+*~
+*.exe
