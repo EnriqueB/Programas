@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
 using namespace std;
@@ -111,7 +112,55 @@ string Centrado(string a, int s){
 	return a;
 }
 int main(){
-	string a="hola";
-	cout<<Derecha(a,10); 
+	string input="", output"";
+	bool opciones [5];
+	ifstream entrada;
+	entrada.open("a.txt");
+	ofstream salida;
+	salida.open("a2.txt");
+	int tam=0;
+	entrada>>tam;
+	while(getline(entrada, input)){
+		if(entrada[0]=='<'){
+			memset(opciones, false, sizeof(opciones));
+			switch(entrada[1]){
+				case 'E':
+					opciones[0]==true;
+					break;
+				case 'C':
+					opciones[1]==true;
+					break;
+				case 'J':
+					opciones[2]==true;
+					break;
+				case 'D':
+					opciones[3]==true;
+					break;
+				case 'I':
+					opciones[4]==true;
+					break;
+			}
+		}
+		else{
+			if(opciones[0]){
+				output=Espaciar(input);
+			}
+			if(opciones[1]){
+				output=Centrado(input, tam);
+			}
+			if(opciones[2]){
+				output=Justificar(input, tam);
+			}
+			if(opciones[3]){
+				output=Derecha(input, tam);
+			}
+			if(opciones[4]){
+				output=Izquierda(input);
+			}
+			salida<<output<<endl;
+		}
+
+	}
+	salida.close();
 	return 0;
 }
