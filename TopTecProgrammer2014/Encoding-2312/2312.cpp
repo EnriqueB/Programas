@@ -99,7 +99,8 @@ int main(){
 		char matriz[20][20];
 		int apS=0, reng, col, apR=0, apC=0, dir=0, r, c; 
 		cin>>reng>>col;
-		getline(cin, inp);
+//		getline(cin, inp);
+		cin.ignore();
 		inp.erase(0,1);
 		for(int i=0; i<inp.length(); i++){
 			cod+=convertir(inp[i]);
