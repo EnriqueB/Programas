@@ -29,10 +29,8 @@ int main(){
 			if(peak){
 				cout<<"Se encontro un peak en la posicion "<<i-1<<", "<<j-1<<endl;
 				cout<<"El elemento es el: "<<matriz[i][j]<<endl;
-				break;
 			}
 		}
-		if(peak)	break;
 	}
 	return 0;
 }

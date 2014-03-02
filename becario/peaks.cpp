@@ -17,14 +17,11 @@ int main(){
 	bool peak=false;
 	for(i=1; i<t+1; i++){
 		if((arr[i]>arr[i-1])&&(arr[i]>arr[i+1])){
+			cout<<"Se encontro que el elemento: "<<arr[i]<<" es un peak\n";
 			peak=true;
-			break;
 		}
 	}
-	if(peak){
-		cout<<"Se encontro que el elemento: "<<arr[i]<<" es un peak\n";
-	}
-	else{
+	if(!peak){
 		cout<<"No se encontraron peaks\n";
 	}
 	return 0;
