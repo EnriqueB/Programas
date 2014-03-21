@@ -40,5 +40,17 @@ void imprimir(){
 }
 int main(){
 	memset(pag, '.', sizeof(pag));
+	string inp;
+	cin>>inp;
+	while(inp!=".EOP"){
+		if(inp==".P"){
+			string font, text;
+			int row, col;
+			cin>>font>>row>>col;
+			cin>>text;
+			
+
+		}
+	}
 	return 0;
 }
