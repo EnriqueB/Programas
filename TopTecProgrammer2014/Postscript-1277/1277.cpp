@@ -331,6 +331,24 @@ int main(){
 				impC5P(text, row, col);
 			}
 		}
+		else if(inp==".L"){
+			string font;
+			char text [200];
+			int row;
+			cin>>font>>row;
+			scanf(" %[^\n]",text);
+			if(font=="C1"){
+				for(int i=1; i<strlen(text)-1; i++){
+					if(text[i]!=' '){
+						pag[row-1][i-1]=text[i];
+					}
+				}
+			}
+			else{
+				impC5P(text, row, 1);
+			}
+			
+		}
 		imprimir();
 		cin>>inp;
 	}
