@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <stdio.h>
 using namespace std;
-char pag[100][300];
+char pag[1000][1000];
 bool A[5][6]={{0,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,1,0},{1,0,0,0,1,0},{1,0,0,0,1,0}};
 bool B[5][6]={{1,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,0,0}};
 bool C[5][6]={{0,1,1,1,1,0},{1,0,0,0,1,0},{1,0,0,0,0,0},{1,0,0,0,0,0},{0,1,1,1,1,0}};
@@ -33,14 +33,16 @@ bool ESP[5][6]={{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0
 void imprimir(){
 	for(int i=0; i<60; i++){
 		for(int j=0; j<60; j++){
-			cout<<pag[i][j];
+			cout<<pag[i+500][j+500];
 		}
 		cout<<endl;
 	}
 }
 void impC5P(char *text, int row, int col){
 	col--;
+	col+=500;
 	row--;
+	row+=500;
 	for(int i=1; i<strlen(text)-1; i++){
 		switch (text[i]){
 			case 'A':
@@ -312,8 +314,7 @@ void impC5P(char *text, int row, int col){
 int main(){
 	memset(pag, '.', sizeof(pag));
 	string inp;
-	cin>>inp;
-	while(inp!=".EOP"){
+	while(cin>>inp){	
 		if(inp==".P"){
 			string font;
 			char text [200];
@@ -323,7 +324,7 @@ int main(){
 			if(font=="C1"){
 				for(int i=1; i<strlen(text)-1; i++){
 					if(text[i]!=' '){
-						pag[row-1][col+i]=text[i];
+						pag[row+499][col+i+498]=text[i];
 					}
 				}
 			}
@@ -340,17 +341,60 @@ int main(){
 			if(font=="C1"){
 				for(int i=1; i<strlen(text)-1; i++){
 					if(text[i]!=' '){
-						pag[row-1][i-1]=text[i];
+						pag[row+499][i+499]=text[i];
 					}
 				}
 			}
 			else{
 				impC5P(text, row, 1);
 			}
-			
 		}
-		imprimir();
-		cin>>inp;
+		else if(inp==".C"){
+			string font;
+			char text[200];
+			int row;
+			cin>>font>>row;
+			scanf(" %[^\n]", text);
+			if(font=="C1"){
+				int mid =strlen(text)/2;
+				for(int i=1; i<strlen(text)-1; i++){
+					if(text[i]!=' '){
+						pag[row+499][530-mid+i]=text[i];
+					}
+				}
+			}
+			else{
+				int mid=(strlen(text)-2)*6;
+				mid/=2;
+				impC5P(text, row, 31-mid);
+			}
+		}
+		else if(inp==".R"){
+			string font;
+			char text[200];
+			int row;
+			cin>>font>>row;
+			scanf(" %[^\n]", text);
+			if(font=="C1"){
+				for(int i=1; i<strlen(text)-1; i++){
+					if(text[i]!=' '){
+						pag[row+499][558-strlen(text)+i]=text[i];
+					}
+				}
+			}
+			else{
+				impC5P(text, row, 61-(strlen(text)-2)*6);
+			}
+		}
+		else if(inp==".EOP"){
+			imprimir();
+			cout<<endl;
+			for(int i=0; i<60; i++){
+				cout<<"-";
+			}
+			cout<<endl<<endl;
+			memset(pag, '.', sizeof(pag));
+		}
 	}
 	return 0;
 }
