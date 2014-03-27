@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 using namespace std;
-char pag[1000][1000];
+char pag[60][60];
 bool A[5][6]={{0,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,1,0},{1,0,0,0,1,0},{1,0,0,0,1,0}};
 bool B[5][6]={{1,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,0,0},{1,0,0,0,1,0},{1,1,1,1,0,0}};
 bool C[5][6]={{0,1,1,1,1,0},{1,0,0,0,1,0},{1,0,0,0,0,0},{1,0,0,0,0,0},{0,1,1,1,1,0}};
@@ -29,28 +29,26 @@ bool W[5][6]={{1,0,0,0,1,0},{1,0,0,0,1,0},{1,0,1,0,1,0},{1,1,0,1,1,0},{1,0,0,0,1
 bool X[5][6]={{1,0,0,0,1,0},{0,1,0,1,0,0},{0,0,1,0,0,0},{0,1,0,1,0,0},{1,0,0,0,1,0}};
 bool Y[5][6]={{1,0,0,0,1,0},{0,1,0,1,0,0},{0,0,1,0,0,0},{0,0,1,0,0,0},{0,0,1,0,0,0}};
 bool Z[5][6]={{1,1,1,1,1,0},{0,0,0,1,0,0},{0,0,1,0,0,0},{0,1,0,0,0,0},{1,1,1,1,1,0}};
-bool ESP[5][6]={{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
 void imprimir(){
 	for(int i=0; i<60; i++){
 		for(int j=0; j<60; j++){
-			cout<<pag[i+500][j+500];
+			cout<<pag[i][j];
 		}
 		cout<<endl;
 	}
 }
 void impC5P(char *text, int row, int col){
-	col--;
-	col+=500;
 	row--;
-	row+=500;
 	for(int i=1; i<strlen(text)-1; i++){
 		switch (text[i]){
 			case 'A':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
-						if(A[j][l]){
-							pag[row+j][col+l]='*';
-						}
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
+							if(A[j][l]){
+								pag[row+j][col+l]='*';
+							}
+							else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -58,9 +56,11 @@ void impC5P(char *text, int row, int col){
 			case 'B':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+							if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(B[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -68,9 +68,11 @@ void impC5P(char *text, int row, int col){
 			case 'C':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(C[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -78,9 +80,11 @@ void impC5P(char *text, int row, int col){
 			case 'D':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(D[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -88,9 +92,11 @@ void impC5P(char *text, int row, int col){
 			case 'E':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(E[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -98,9 +104,11 @@ void impC5P(char *text, int row, int col){
 			case 'F':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(F[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -108,9 +116,11 @@ void impC5P(char *text, int row, int col){
 			case 'G':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(G[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -118,9 +128,11 @@ void impC5P(char *text, int row, int col){
 			case 'H':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(H[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -128,9 +140,11 @@ void impC5P(char *text, int row, int col){
 			case 'I':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(I[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -138,9 +152,11 @@ void impC5P(char *text, int row, int col){
 			case 'J':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(J[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -148,9 +164,11 @@ void impC5P(char *text, int row, int col){
 			case 'K':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(K[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -158,9 +176,11 @@ void impC5P(char *text, int row, int col){
 			case 'L':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(L[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -168,9 +188,11 @@ void impC5P(char *text, int row, int col){
 			case 'M':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(M[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -178,9 +200,11 @@ void impC5P(char *text, int row, int col){
 			case 'N':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(N[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -188,9 +212,11 @@ void impC5P(char *text, int row, int col){
 			case 'O':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(O[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -198,9 +224,11 @@ void impC5P(char *text, int row, int col){
 			case 'P':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(P[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -208,9 +236,11 @@ void impC5P(char *text, int row, int col){
 			case 'Q':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(Q[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -218,9 +248,11 @@ void impC5P(char *text, int row, int col){
 			case 'R':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(R[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -228,9 +260,11 @@ void impC5P(char *text, int row, int col){
 			case 'S':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(S[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -238,9 +272,11 @@ void impC5P(char *text, int row, int col){
 			case 'T':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(T[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -248,9 +284,11 @@ void impC5P(char *text, int row, int col){
 			case 'U':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(U[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -258,19 +296,23 @@ void impC5P(char *text, int row, int col){
 			case 'V':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(V[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
 				break;
 			case 'W':
 				for(int j=0; j<5; j++){
-					for(int l=0; l<6; l++){
+					for(int l=0; l<6; l++){	
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(W[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -278,9 +320,11 @@ void impC5P(char *text, int row, int col){
 			case 'X':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(X[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -288,9 +332,11 @@ void impC5P(char *text, int row, int col){
 			case 'Y':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(Y[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -298,9 +344,11 @@ void impC5P(char *text, int row, int col){
 			case 'Z':
 				for(int j=0; j<5; j++){
 					for(int l=0; l<6; l++){
+						if((row+j)>=0 && (row+j)<60 && (col+l)>=0 && (col+l)<60)
 						if(Z[j][l]){
 							pag[row+j][col+l]='*';
 						}
+						else	pag[row+j][col+l]='.';
 					}
 				}
 				col+=6;
@@ -323,13 +371,14 @@ int main(){
 			scanf(" %[^\n]",text);
 			if(font=="C1"){
 				for(int i=1; i<strlen(text)-1; i++){
+					if((col-2+i)>=0 && (col-2+i)<60)
 					if(text[i]!=' '){
-						pag[row+499][col+i+498]=text[i];
+						pag[row-1][col-2+i]=text[i];
 					}
 				}
 			}
 			else{
-				impC5P(text, row, col);
+				impC5P(text, row, col-1);
 			}
 		}
 		else if(inp==".L"){
@@ -340,13 +389,14 @@ int main(){
 			scanf(" %[^\n]",text);
 			if(font=="C1"){
 				for(int i=1; i<strlen(text)-1; i++){
+					if((i-1)>=0 && (i-1)<60)
 					if(text[i]!=' '){
-						pag[row+499][i+499]=text[i];
+						pag[row-1][i-1]=text[i];
 					}
 				}
 			}
 			else{
-				impC5P(text, row, 1);
+				impC5P(text, row, 0);
 			}
 		}
 		else if(inp==".C"){
@@ -356,17 +406,17 @@ int main(){
 			cin>>font>>row;
 			scanf(" %[^\n]", text);
 			if(font=="C1"){
-				int mid =strlen(text)/2;
+				int mid =30-(strlen(text)-2)/2;
 				for(int i=1; i<strlen(text)-1; i++){
+					if((mid+i-1)>=0 && (mid+i-1)<60)
 					if(text[i]!=' '){
-						pag[row+499][530-mid+i]=text[i];
+						pag[row-1][mid+i-1]=text[i];
 					}
 				}
 			}
 			else{
-				int mid=(strlen(text)-2)*6;
-				mid/=2;
-				impC5P(text, row, 31-mid);
+				int mid=30-(strlen(text)-2)*3;
+				impC5P(text, row, mid);
 			}
 		}
 		else if(inp==".R"){
@@ -376,25 +426,25 @@ int main(){
 			cin>>font>>row;
 			scanf(" %[^\n]", text);
 			if(font=="C1"){
+				int p = 60-(strlen(text)-2);
 				for(int i=1; i<strlen(text)-1; i++){
+					if((p+i-1)>=0 && (p+i-1)<60)
 					if(text[i]!=' '){
-						pag[row+499][558-strlen(text)+i]=text[i];
+						pag[row-1][p+i-1]=text[i];
 					}
 				}
 			}
 			else{
-				impC5P(text, row, 61-(strlen(text)-2)*6);
+				int p = 60-(strlen(text)-2)*6;
+				impC5P(text, row, p);
 			}
 		}
 		else if(inp==".EOP"){
 			imprimir();
-			cout<<endl;
-			for(int i=0; i<60; i++){
-				cout<<"-";
-			}
-			cout<<endl<<endl;
+			cout << endl << "------------------------------------------------------------" << endl << endl;
 			memset(pag, '.', sizeof(pag));
 		}
 	}
 	return 0;
 }
+
